@@ -1,21 +1,28 @@
 {
-  "name": "react-native-sim",
-  "version": "0.1.0",
-  "description": "",
-  "main": "sim.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sigrlami/react-native-sim"
-  },
-  "keywords": [
-    "react-component",
-    "react-native",
-    "ios",
-    "android",
-    "device",
-    "sim",
-    "phone number"
-  ],
-  "author": "Sergey Bushnyak <sergey.bushnyak@sigrlami.eu> (https://github.com/sigrlami)",
-  "license": "MIT"
+    "name": "react-native-sim",
+    "version": "0.1.1",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+	"@types/react-native": "^0.37.1"
+    },
+    "peerDependencies": {
+	"react": "^15.4.1",
+	"react-native": "^0.39.2"
+    },
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/sigrlami/react-native-sim"
+    },
+    "keywords": [
+	"react-component",
+	"react-native",
+	"ios",
+	"android",
+	"device",
+	"sim",
+	"phone number"
+    ],
+    "author": "Sergey Bushnyak <sergey.bushnyak@sigrlami.eu> (https://github.com/sigrlami)",
+    "license": "MIT"
 }
