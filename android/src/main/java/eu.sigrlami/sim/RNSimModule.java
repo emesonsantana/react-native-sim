@@ -1,12 +1,16 @@
 package eu.sigrlami.sim;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import org.json.JSONException;
 
 import javax.annotation.Nullable;
 
@@ -14,7 +18,7 @@ public class RNSimModule extends ReactContextBaseJavaModule {
 
     ReactApplicationContext reactContext;
 
-    public RNDeviceModule(ReactApplicationContext reactContext) {
+    public RNSimModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
@@ -34,7 +38,7 @@ public class RNSimModule extends ReactContextBaseJavaModule {
         PackageManager packageManager = this.reactContext.getPackageManager();
         String packageName = this.reactContext.getPackageName();
 
-        TelephonyManager telManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager telManager = (TelephonyManager) this.reactContext.getSystemService(Context.TELEPHONY_SERVICE);
 
         int phoneCount = 0;
         int activeSubscriptionInfoCount = 0;
@@ -45,7 +49,7 @@ public class RNSimModule extends ReactContextBaseJavaModule {
                 phoneCount = manager.getPhoneCount();
 
                 if (simPermissionGranted(Manifest.permission.READ_PHONE_STATE)) {
-                    SubscriptionManager manager = (SubscriptionManager) cntx.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+                    SubscriptionManager manager = (SubscriptionManager) this.reactContext.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
                     activeSubscriptionInfoCount = manager.getActiveSubscriptionInfoCount();
                     activeSubscriptionInfoCountMax = manager.getActiveSubscriptionInfoCountMax();
 
@@ -92,5 +96,4 @@ public class RNSimModule extends ReactContextBaseJavaModule {
         return constants;
     }
 }
-    
-}
+

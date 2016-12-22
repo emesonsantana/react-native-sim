@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="react-native-0.39.2">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/react-native-0.39.2.aar!/" />
+    </SOURCES>
+    <jarDirectory url="jar://$PROJECT_DIR$/lib/react-native-0.39.2.aar!/" recursive="false" type="SOURCES" />
+  </library>
+</component>
