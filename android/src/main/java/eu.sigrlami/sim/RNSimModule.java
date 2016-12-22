@@ -5,6 +5,7 @@ import java.util.*;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -82,8 +83,6 @@ public class RNSimModule extends ReactContextBaseJavaModule {
                         constants.put("deviceId" + sub, deviceId);
                         constants.put("simSerialNumber" + sub, iccId);
                         constants.put("subscriptionId" + sub, subscriptionId);
-
-                        sims.put(simData);
                     }
                 }
             }
@@ -94,6 +93,14 @@ public class RNSimModule extends ReactContextBaseJavaModule {
         }
 
         return constants;
+    }
+
+    private boolean simPermissionGranted(String type) {
+        if (Build.VERSION.SDK_INT < 23) {
+            return true;
+        }
+        return (PackageManager.PERMISSION_GRANTED ==
+                reactContext.requestPermission(type));
     }
 }
 
